@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import PropTypes, { elementType } from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Card = (props) => {
-  const { uid, title, img, urlInfo, CardDetailsA, CardDetailsB, CardDetailsC } =
-    props;
+  const {
+    elementType,
+    uid,
+    title,
+    img,
+    urlInfo,
+    CardDetailsA,
+    CardDetailsB,
+    CardDetailsC,
+  } = props;
 
   return (
     <div className="card text-start me-5" style={{ minWidth: "400px" }}>
@@ -19,7 +27,7 @@ export const Card = (props) => {
         <p className="card-text">{`Id Card: ${uid}`}</p>
 
         <div className="d-flex justify-content-between">
-          <Link>
+          <Link to={`/${elementType}/${uid}`}>
             <button className="btn btn-primary">Learn More!</button>
           </Link>
           <button className="btn btn-outline-warning">
