@@ -8,7 +8,9 @@ export const Home = () => {
   const [planets, setPlanets] = useState();
   const [people, setPeople] = useState();
   const [vehicles, setVehicles] = useState();
-  const [infoDetails, setInfoDetails] = useState([]);
+  const [infoDetailsPlanets, setInfoDetailsPlanets] = useState([]);
+  const [infoDetailsPeople, setInfoDetailsPeople] = useState([]);
+  const [infoDetailsVehicles, setInfoDetailsVehicles] = useState([]);
 
   useEffect(() => {
     actions
@@ -29,7 +31,7 @@ export const Home = () => {
           actions.getInfoDetails(element.url)
         );
         const details = await Promise.all(detailsPromises);
-        setInfoDetails(details);
+        setInfoDetailsPeople(details);
       };
       fetchDetails();
     }
@@ -42,7 +44,7 @@ export const Home = () => {
           actions.getInfoDetails(element.url)
         );
         const details = await Promise.all(detailsPromises);
-        setInfoDetails(details);
+        setInfoDetailsPlanets(details);
       };
       fetchDetails();
     }
@@ -55,7 +57,7 @@ export const Home = () => {
           actions.getInfoDetails(element.url)
         );
         const details = await Promise.all(detailsPromises);
-        setInfoDetails(details);
+        setInfoDetailsVehicles(details);
       };
       fetchDetails();
     }
@@ -80,18 +82,18 @@ export const Home = () => {
                   title={element.name}
                   urlInfo={element.url}
                   CardDetailsA={
-                    infoDetails[index]
-                      ? `Climate: ${infoDetails[index].climate}`
+                    infoDetailsPlanets[index]
+                      ? `Climate: ${infoDetailsPlanets[index].climate}`
                       : "Cargando..."
                   }
                   CardDetailsB={
-                    infoDetails[index]
-                      ? `Terraine: ${infoDetails[index].terrain}`
+                    infoDetailsPlanets[index]
+                      ? `Terraine: ${infoDetailsPlanets[index].terrain}`
                       : "Cargando..."
                   }
                   CardDetailsC={
-                    infoDetails[index]
-                      ? `Population: ${infoDetails[index].population}`
+                    infoDetailsPlanets[index]
+                      ? `Population: ${infoDetailsPlanets[index].population}`
                       : "Cargando..."
                   }
                 />
@@ -142,18 +144,18 @@ export const Home = () => {
                   title={element.name}
                   urlInfo={element.url}
                   CardDetailsA={
-                    infoDetails[index]
-                      ? `Gender: ${infoDetails[index].gender}`
+                    infoDetailsPeople[index]
+                      ? `Gender: ${infoDetailsPeople[index].gender}`
                       : "Cargando..."
                   }
                   CardDetailsB={
-                    infoDetails[index]
-                      ? `Hair Color: ${infoDetails[index].hair_color}`
+                    infoDetailsPeople[index]
+                      ? `Hair Color: ${infoDetailsPeople[index].hair_color}`
                       : "Cargando..."
                   }
                   CardDetailsC={
-                    infoDetails[index]
-                      ? `Eye Color: ${infoDetails[index].eye_color}`
+                    infoDetailsPeople[index]
+                      ? `Eye Color: ${infoDetailsPeople[index].eye_color}`
                       : "Cargando..."
                   }
                 />
@@ -204,18 +206,18 @@ export const Home = () => {
                   title={element.name}
                   urlInfo={element.url}
                   CardDetailsA={
-                    infoDetails[index]
-                      ? `Model: ${infoDetails[index].model}`
+                    infoDetailsVehicles[index]
+                      ? `Model: ${infoDetailsVehicles[index].model}`
                       : "Cargando..."
                   }
                   CardDetailsB={
-                    infoDetails[index]
-                      ? `Length: ${infoDetails[index].length}`
+                    infoDetailsVehicles[index]
+                      ? `Length: ${infoDetailsVehicles[index].length}`
                       : "Cargando..."
                   }
                   CardDetailsC={
-                    infoDetails[index]
-                      ? `Cargo Capacity: ${infoDetails[index].cargo_capacity}`
+                    infoDetailsVehicles[index]
+                      ? `Cargo Capacity: ${infoDetailsVehicles[index].cargo_capacity}`
                       : "Cargando..."
                   }
                 />
