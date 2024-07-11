@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+  const { store, actions } = useContext(Context);
+  // const [listLength, setListLength] = useState();
+  // useEffect(() => {
+  //   setListLength(store.favourites.length());
+  // }, [store.favourites]);
+  console.log("hola store", store.favourites);
   return (
     <nav className="navbar navbar-light bg-light mb-5">
       <div className="container">
@@ -19,24 +26,20 @@ export const Navbar = () => {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Favourites
+              Favourites {store.favourites.length}
             </button>
             <ul className="dropdown-menu">
-              <li>
-                <a className="dropdown-item" href="#">
-                  Action
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </li>
+              {store.favourites.map((nameCard, index) => (
+                <li className="d-flex align-items-center" key={index}>
+                  <p className="dropdown-item" style={{ margin: "0" }} href="#">
+                    {nameCard}
+                  </p>
+                  <i
+                    onClick={() => actions.deleteTrash(nameCard)}
+                    className="fas fa-trash-alt p-1"
+                  ></i>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

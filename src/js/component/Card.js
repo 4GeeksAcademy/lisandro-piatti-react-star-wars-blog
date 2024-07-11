@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PropTypes, { elementType } from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Card = (props) => {
+  const { store, actions } = useContext(Context);
   const {
     elementType,
     uid,
@@ -39,8 +40,15 @@ export const Card = (props) => {
           <Link to={`/${elementType}/${uid}`}>
             <button className="btn btn-primary">Learn More!</button>
           </Link>
-          <button className="btn btn-outline-warning">
-            <i className="far fa-heart"></i>
+          <button
+            className="btn btn-outline-warning"
+            onClick={(e) => actions.favouritesAction(title)}
+          >
+            <i
+              className={
+                actions.heartColour(title) ? "fas fa-heart" : "far fa-heart"
+              }
+            ></i>
           </button>
         </div>
       </div>

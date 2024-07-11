@@ -35,7 +35,7 @@ export const Home = () => {
       };
       fetchDetails();
     }
-  }, [people, actions]);
+  }, [people]);
 
   useEffect(() => {
     if (planets && planets.results) {
@@ -48,7 +48,7 @@ export const Home = () => {
       };
       fetchDetails();
     }
-  }, [planets, actions]);
+  }, [planets]);
 
   useEffect(() => {
     if (vehicles && vehicles.results) {
@@ -61,7 +61,7 @@ export const Home = () => {
       };
       fetchDetails();
     }
-  }, [vehicles, actions]);
+  }, [vehicles]);
 
   return (
     <div className="text-center mt-5">

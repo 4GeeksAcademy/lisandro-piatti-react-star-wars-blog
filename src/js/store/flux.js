@@ -13,10 +13,36 @@ const getState = ({ getStore, getActions, setStore }) => {
           initial: "white",
         },
       ],
+      favourites: [],
     },
     actions: {
+      deleteTrash: (title) => {
+        const store = getStore();
+        const actions = getActions();
+        const isFavorite = actions.heartColour(title);
+        if (isFavorite) {
+          setStore({
+            favourites: store.favourites.filter((repeat) => repeat != title),
+          });
+        }
+      },
       // Use getActions to call a function within a fuction
-
+      heartColour: (title) => {
+        const store = getStore();
+        return store.favourites.includes(title);
+      },
+      favouritesAction: (title) => {
+        const store = getStore();
+        if (store.favourites.includes(title)) {
+          setStore({
+            favourites: store.favourites.filter((repeat) => repeat != title),
+          });
+          console.log(store.favourites);
+        } else {
+          setStore({ favourites: [...store.favourites, title] });
+          console.log(store.favourites);
+        }
+      },
       getInfoDetails: async (urlForFetch) => {
         try {
           let response = await fetch(urlForFetch);
