@@ -37,10 +37,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({
             favourites: store.favourites.filter((repeat) => repeat != title),
           });
-          console.log(store.favourites);
         } else {
           setStore({ favourites: [...store.favourites, title] });
-          console.log(store.favourites);
         }
       },
       getInfoDetails: async (urlForFetch) => {
@@ -52,7 +50,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           let data = await response.json();
 
-          console.log(data.result.properties);
           return data.result.properties;
         } catch (error) {
           console.error(`Promise error: ${error}`);
@@ -68,7 +65,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             return;
           }
           let data = await resp.json();
-          console.log(data);
           return data;
         } catch (error) {
           console.error(`Error en la promesa: ${error}`);
@@ -84,7 +80,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             return;
           }
           let data = await resp.json();
-          console.log(data);
           return data;
         } catch (error) {
           console.error(`Error en la promesa: ${error}`);

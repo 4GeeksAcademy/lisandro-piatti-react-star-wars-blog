@@ -8,7 +8,7 @@ export const Navbar = () => {
   // useEffect(() => {
   //   setListLength(store.favourites.length());
   // }, [store.favourites]);
-  console.log("hola store", store.favourites);
+
   return (
     <nav className="navbar navbar-light bg-light mb-5">
       <div className="container">
